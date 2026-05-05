@@ -1,30 +1,26 @@
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
+import { server } from '../dist/server/server.js';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-// Dynamically import the server at runtime
-let serverModule;
-
-async function getServer() {
-  if (!serverModule) {
-    const serverPath = join(__dirname, '../dist/server/server.js');
-    serverModule = await import(serverPath);
-  }
-  return serverModule.default;
-}
-
-export default async function handler(request) {
+export default async (req, res) => {
   try {
-    const server = await getServer();
-    return await server.fetch(request);
+    const response = await server.fetch(
+      new Request(new URL(req.url || '/', `http://${req.headers.host}`), {
+        method: req.method,
+        headers: req.headers,
+        body: req.method !== 'GET' && req.method !== 'HEAD' ? req : undefined,
+      })
+    );
+
+    res.status(response.status);
+    for (const [key, value] of response.headers.entries()) {
+      res.setHeader(key, value);
+    }
+    
+    return res.end(await response.text());
   } catch (error) {
     console.error('Handler error:', error);
-    return new Response('Internal Server Error', { 
-      status: 500,
-      statusText: 'Internal Server Error'
-    });
+    res.status(500).end('Internal Server Error');
   }
-}
+};
+
 
 

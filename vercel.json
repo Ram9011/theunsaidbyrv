@@ -2,24 +2,22 @@
   "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": "dist/client",
+  "env": {},
   "routes": [
     {
-      "src": "/assets/(.*)",
+      "src": "/assets/(.+)",
       "dest": "/assets/$1",
       "headers": {
         "cache-control": "public, max-age=31536000, immutable"
       }
     },
     {
-      "src": "/images/(.*)",
-      "dest": "/images/$1",
-      "headers": {
-        "cache-control": "public, max-age=31536000, immutable"
-      }
+      "src": "/images/(.+)",
+      "dest": "/images/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/api/handler.js"
+      "dest": "api/handler"
     }
   ]
 }

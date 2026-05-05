@@ -2,7 +2,13 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { REACTION_CATEGORIES } from "../hooks/useReactions";
 
 interface AnnotationToolbarProps {
-  onHighlight: (text: string, pIdx: number, start: number, end: number, color?: "yellow" | "pink" | "green") => void;
+  onHighlight: (
+    text: string,
+    pIdx: number,
+    start: number,
+    end: number,
+    color?: "yellow" | "pink" | "green",
+  ) => void;
   onUnderline: (text: string, pIdx: number, start: number, end: number) => void;
   onAddNote: (text: string, pIdx: number, start: number, end: number) => void;
   onSave?: (text: string, pIdx: number) => void;
@@ -46,7 +52,7 @@ export function AnnotationToolbar({
     const range = sel.getRangeAt(0);
     let node: Node | null = range.startContainer;
     let pEl: HTMLElement | null = null;
-    
+
     // Search up through parents for data-paragraph-index
     while (node) {
       if (node instanceof HTMLElement && node.dataset.paragraphIndex !== undefined) {
@@ -55,7 +61,7 @@ export function AnnotationToolbar({
       }
       node = node.parentElement;
     }
-    
+
     // If not found in parents, try the common ancestor
     if (!pEl) {
       const commonAncestor = range.commonAncestorContainer;
@@ -68,7 +74,7 @@ export function AnnotationToolbar({
         node = node.parentElement;
       }
     }
-    
+
     if (!pEl) {
       setPos(null);
       return;

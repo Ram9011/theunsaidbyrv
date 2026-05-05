@@ -1,26 +1,33 @@
-import { server } from '../dist/server/server.js';
-
 export default async (req, res) => {
   try {
-    const response = await server.fetch(
-      new Request(new URL(req.url || '/', `http://${req.headers.host}`), {
-        method: req.method,
-        headers: req.headers,
-        body: req.method !== 'GET' && req.method !== 'HEAD' ? req : undefined,
-      })
-    );
+    // Load the server module - use require.resolve to find it at runtime
+    const { server } = await import("../dist/server/server.js");
 
+    // Create a Request object compatible with Fetch API
+    const url = new URL(req.url || "/", `http://${req.headers.host}`);
+    const request = new Request(url, {
+      method: req.method,
+      headers: req.headers,
+      body: ["GET", "HEAD"].includes(req.method) ? undefined : req,
+    });
+
+    // Call the server handler
+    const response = await server.fetch(request);
+
+    // Set response status and headers
     res.status(response.status);
-    for (const [key, value] of response.headers.entries()) {
+    response.headers.forEach((value, key) => {
       res.setHeader(key, value);
-    }
-    
-    return res.end(await response.text());
+    });
+
+    // Send the response body
+    const buffer = await response.buffer();
+    res.end(buffer);
   } catch (error) {
-    console.error('Handler error:', error);
-    res.status(500).end('Internal Server Error');
+    console.error("Handler error:", error);
+    res.status(500).json({
+      error: "Internal Server Error",
+      message: error instanceof Error ? error.message : "Unknown error",
+    });
   }
 };
-
-
-

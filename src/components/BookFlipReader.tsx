@@ -29,7 +29,10 @@ const EASE = "cubic-bezier(0.645, 0.045, 0.355, 1.000)";
 function playPaperSound() {
   try {
     if (localStorage.getItem("tgwfhe_sound") === "off") return;
-    const ctx = new ((window as any).AudioContext || (window as any).webkitAudioContext)();
+    const audioContextClass =
+      (window as unknown as Record<string, typeof AudioContext>).AudioContext ||
+      (window as unknown as Record<string, typeof AudioContext>).webkitAudioContext;
+    const ctx = new audioContextClass();
     const n = Math.floor(ctx.sampleRate * 0.08);
     const buf = ctx.createBuffer(1, n, ctx.sampleRate);
     const d = buf.getChannelData(0);

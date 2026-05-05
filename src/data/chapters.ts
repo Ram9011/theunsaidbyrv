@@ -55,7 +55,10 @@ export const chapters: Chapter[] = [
     content: [
       { type: "paragraph", text: "PART ONE · From Meeting to Proposal" },
       { type: "paragraph", text: "Prologue - The room is exactly the same." },
-      { type: "paragraph", text: "1. The Wedding - India in December has a particular kind of warmth." },
+      {
+        type: "paragraph",
+        text: "1. The Wedding - India in December has a particular kind of warmth.",
+      },
       { type: "paragraph", text: "2. The Farewell — and After" },
       { type: "paragraph", text: "3. The Reception — and the Dinner" },
       { type: "paragraph", text: "4. The Room, and What She Found In It" },
@@ -95,10 +98,16 @@ export const chapters: Chapter[] = [
     readTimeMinutes: 1,
     specialTreatment: "prologue",
     content: [
-      { type: "paragraph", text: "To the ones who love quietly — who keep a forgotten scarf folded in their drawer, who remember a smile that the world never photographed, who understand that grief is just love with nowhere left to go." },
+      {
+        type: "paragraph",
+        text: "To the ones who love quietly — who keep a forgotten scarf folded in their drawer, who remember a smile that the world never photographed, who understand that grief is just love with nowhere left to go.",
+      },
       { type: "paragraph", text: "This book is for you." },
       { type: "divider" },
-      { type: "pullquote", text: "Some people do not enter your life. They simply arrive, like rain you didn't expect — unannounced, unhurried, and completely impossible to forget." },
+      {
+        type: "pullquote",
+        text: "Some people do not enter your life. They simply arrive, like rain you didn't expect — unannounced, unhurried, and completely impossible to forget.",
+      },
       { type: "paragraph", text: "— Raj Vishwakarma" },
     ],
   },

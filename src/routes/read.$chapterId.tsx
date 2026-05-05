@@ -93,7 +93,7 @@ function AnnotatedText({
     const slice = text.slice(start, end);
     let cls = "ann-highlight";
     let colorClass = "";
-    
+
     if (ann.type === "underline") {
       cls = "ann-underline";
     } else if (ann.type === "highlight") {
@@ -104,8 +104,8 @@ function AnnotatedText({
     }
 
     parts.push(
-      <span 
-        key={`a-${i}`} 
+      <span
+        key={`a-${i}`}
         className={cls}
         data-highlight-color={ann.color}
         title="Click to remove"
@@ -225,6 +225,7 @@ function Reader({ ch }: { ch: (typeof chapters)[0] }) {
   }, []);
 
   // Part divider
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (chIdx === 0) return;
     const prev = chapters[chIdx - 1];
@@ -274,7 +275,13 @@ function Reader({ ch }: { ch: (typeof chapters)[0] }) {
 
   // Annotation handlers
   const handleHighlight = useCallback(
-    (text: string, pIdx: number, start: number, end: number, color: "yellow" | "pink" | "green" = "yellow") => {
+    (
+      text: string,
+      pIdx: number,
+      start: number,
+      end: number,
+      color: "yellow" | "pink" | "green" = "yellow",
+    ) => {
       addAnnotation({
         chapterId: ch.id,
         paragraphIndex: pIdx,

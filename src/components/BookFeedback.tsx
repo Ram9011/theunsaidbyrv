@@ -426,12 +426,28 @@ export function BookFeedback() {
               }}
             >
               {[
-                { label: "Instagram", icon: "📸", url: "https://www.instagram.com/raajkibatein?igsh=MXBxaHZxeGRnNWZrMQ==" },
-                { label: "Facebook", icon: "📘", url: "https://www.facebook.com/profile.php?id=61586723681789" },
-                { label: "LinkedIn", icon: "💼", url: "https://www.linkedin.com/in/ram-sanehi-437707282/" },
+                {
+                  label: "Instagram",
+                  icon: "📸",
+                  url: "https://www.instagram.com/raajkibatein?igsh=MXBxaHZxeGRnNWZrMQ==",
+                },
+                {
+                  label: "Facebook",
+                  icon: "📘",
+                  url: "https://www.facebook.com/profile.php?id=61586723681789",
+                },
+                {
+                  label: "LinkedIn",
+                  icon: "💼",
+                  url: "https://www.linkedin.com/in/ram-sanehi-437707282/",
+                },
                 { label: "X (Twitter)", icon: "𝕏", url: "https://x.com/Vishwakarm4095" },
                 { label: "Medium", icon: "✍️", url: "https://medium.com/@vish6933" },
-                { label: "YouTube", icon: "▶️", url: "https://youtube.com/@raajkibatein_rv?si=282ntPgDKi2C4AQc" },
+                {
+                  label: "YouTube",
+                  icon: "▶️",
+                  url: "https://youtube.com/@raajkibatein_rv?si=282ntPgDKi2C4AQc",
+                },
               ].map((s) => (
                 <a
                   key={s.label}

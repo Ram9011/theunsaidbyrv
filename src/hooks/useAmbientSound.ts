@@ -44,11 +44,11 @@ export function useAmbientSound() {
     audio.crossOrigin = "anonymous";
     audio.loop = true;
     audio.volume = volume;
-    
+
     // Try primary URL first
     const primaryUrl = SOUND_URLS[track];
     const backupUrl = BACKUP_URLS[track];
-    
+
     audio.src = primaryUrl;
     audio.play().catch(() => {
       // If primary fails, try backup
@@ -57,7 +57,7 @@ export function useAmbientSound() {
         console.debug(`Could not play ambient sound: ${track}`);
       });
     });
-    
+
     audioRef.current = audio;
 
     return () => {
@@ -70,6 +70,7 @@ export function useAmbientSound() {
   }, [track]);
 
   // Update volume without restarting
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (audioRef.current) audioRef.current.volume = Math.max(0, Math.min(1, volume));
   }, [volume]);

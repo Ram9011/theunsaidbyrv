@@ -43,6 +43,7 @@ function CoverPage() {
     "This is the tale of a man who kept the small things she forgot, and lost the one thing he couldn't hold onto.",
   ];
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (showIntro) {
       // Switch greetings every 800ms
@@ -165,17 +166,25 @@ function CoverPage() {
           borderRadius: "16px",
           padding: "0.75rem 0.2rem",
           backdropFilter: "blur(12px)",
-          boxShadow: "0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(201, 169, 110, 0.1), inset 0 0 30px rgba(201, 169, 110, 0.08)",
+          boxShadow:
+            "0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(201, 169, 110, 0.1), inset 0 0 30px rgba(201, 169, 110, 0.08)",
           transition: "all 0.3s ease",
         }}
         whileHover={{
-          boxShadow: "0 30px 80px rgba(0, 0, 0, 0.8), 0 0 60px rgba(201, 169, 110, 0.15), inset 0 0 40px rgba(201, 169, 110, 0.12)",
+          boxShadow:
+            "0 30px 80px rgba(0, 0, 0, 0.8), 0 0 60px rgba(201, 169, 110, 0.15), inset 0 0 40px rgba(201, 169, 110, 0.12)",
         }}
       >
         <img
           src="/images/coverpage.png"
           alt="The Girl Who Forgot Her Earrings"
-          style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", display: "block", borderRadius: "12px" }}
+          style={{
+            maxWidth: "100%",
+            maxHeight: "100%",
+            objectFit: "contain",
+            display: "block",
+            borderRadius: "12px",
+          }}
         />
       </motion.div>
 

@@ -16,7 +16,9 @@ export function TocDrawer({ currentChapterId, onNavigate, onClose }: TocDrawerPr
     try {
       const saved = localStorage.getItem("tgwfhe_readPages");
       if (saved) JSON.parse(saved).forEach((id: string) => s.add(id));
-    } catch {}
+    } catch {
+      // Ignore parsing errors
+    }
     chapters.forEach((ch) => {
       const p = localStorage.getItem(`reading-progress-${ch.id}`);
       if (p && Number(p) > 40) s.add(ch.id);

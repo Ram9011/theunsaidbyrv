@@ -103,7 +103,11 @@ export function AmbientSoundControl() {
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.2 }}
-                style={{ marginTop: "0.75rem", paddingTop: "0.75rem", borderTop: "1px solid rgba(201,168,76,0.1)" }}
+                style={{
+                  marginTop: "0.75rem",
+                  paddingTop: "0.75rem",
+                  borderTop: "1px solid rgba(201,168,76,0.1)",
+                }}
               >
                 <label
                   style={{

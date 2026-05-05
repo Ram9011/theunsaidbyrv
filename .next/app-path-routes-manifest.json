@@ -1,0 +1,6 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/chapters/page": "/chapters",
+  "/page": "/",
+  "/read/[chapterId]/page": "/read/[chapterId]"
+}

@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build && npm run postbuild",
-    "postbuild": "cp -r dist/client/* dist/ && rm -rf dist/client dist/server",
+    "prebuild": "echo 'Building...'",
+    "build": "vite build && node scripts/flatten-dist.js",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",

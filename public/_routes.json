@@ -4,7 +4,7 @@
     "/*"
   ],
   "exclude": [
-    "/assets/*",
+    "/client/assets/*",
     "/images/*",
     "/*.css",
     "/*.js",

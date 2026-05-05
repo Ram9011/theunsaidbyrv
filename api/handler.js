@@ -1,7 +1,7 @@
 export default async (req, res) => {
   try {
     // Load the server module - use require.resolve to find it at runtime
-    const { server } = await import("../dist/server/server.js");
+    const server = await import("../dist/server/server.js").then((m) => m.default);
 
     // Create a Request object compatible with Fetch API
     const url = new URL(req.url || "/", `http://${req.headers.host}`);

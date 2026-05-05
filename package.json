@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "vite build && npm run postbuild",
+    "postbuild": "cp -r dist/client/* dist/ && rm -rf dist/client dist/server",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
